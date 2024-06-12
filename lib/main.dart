@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mastersMartialArts/config/router.dart';
 import 'package:mastersMartialArts/theme/color_themes.dart';

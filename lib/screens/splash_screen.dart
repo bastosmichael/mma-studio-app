@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      context.go('/home'); // Using context.go for GoRouter navigation
+      context.push('/home'); // Correct navigation method for GoRouter
     });
   }
 

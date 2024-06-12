@@ -18,13 +18,15 @@ class MastersMartialArtsApp extends StatelessWidget {
       title: "Master's Martial Arts",
       routerConfig: router,
       theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: lightColorScheme,
-          textTheme: textTheme),
+        useMaterial3: true,
+        colorScheme: lightColorScheme,
+        textTheme: textTheme,
+      ),
       darkTheme: ThemeData(
-          useMaterial3: true,
-          colorScheme: darkColorScheme,
-          textTheme: textTheme),
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+        textTheme: textTheme,
+      ),
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
         breakpoints: [

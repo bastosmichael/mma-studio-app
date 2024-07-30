@@ -17,7 +17,7 @@ class MenuScaffold extends StatelessWidget {
               title: const Text("Master's Martial Arts"),
               actions: routeNames
                   .map((route) => TextButton(
-                        onPressed: () => context.go('/$route'),
+                        onPressed: () => context.go('/${route.toLowerCase()}'),
                         child: Text(route),
                       ))
                   .toList(),
@@ -32,15 +32,23 @@ class MenuScaffold extends StatelessWidget {
             ),
             drawer: Drawer(
               child: ListView(
-                children: routeNames
-                    .map((route) => ListTile(
-                          title: Text(route),
-                          onTap: () {
-                            context.go('/$route');
-                            Navigator.of(context).pop();
-                          },
-                        ))
-                    .toList(),
+                children: [
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                    child: Text('Menu'),
+                  ),
+                  ...routeNames
+                      .map((route) => ListTile(
+                            title: Text(route),
+                            onTap: () {
+                              context.go('/${route.toLowerCase()}');
+                              Navigator.of(context).pop();
+                            },
+                          ))
+                      .toList(),
+                ],
               ),
             ),
             body: child,

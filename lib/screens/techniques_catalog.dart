@@ -9,31 +9,27 @@ class TechniquesCatalog extends StatelessWidget {
   final List<Technique> techniques = [
     Technique(
       id: '1',
-      title: 'Jab',
-      description: 'A quick, straight punch thrown with the lead hand.',
-      thumbnailUrl: 'https://example.com/jab_thumbnail.jpg',
-      videoId: 'jab_video_id',
+      title: 'Boxing Alphabet',
+      description: 'A set of punches for beginners.',
+      videoId: 'UR9-AP2yzY0',
     ),
     Technique(
       id: '2',
-      title: 'Cross',
-      description: 'A straight punch thrown with the rear hand.',
-      thumbnailUrl: 'https://example.com/cross_thumbnail.jpg',
-      videoId: 'cross_video_id',
+      title: 'Stance Flow',
+      description: 'A set of stances for beginners.',
+      videoId: 'rwkEoi0f3V0',
     ),
     Technique(
       id: '3',
-      title: 'Hook',
-      description: 'A semicircular punch thrown with the lead hand to the side of the opponent\'s head.',
-      thumbnailUrl: 'https://example.com/hook_thumbnail.jpg',
-      videoId: 'hook_video_id',
+      title: 'Kick Count',
+      description: 'Different kicks that are needed for all yellow belts.',
+      videoId: 'WVVcjqLsrSM',
     ),
     Technique(
       id: '4',
-      title: 'Uppercut',
-      description: 'A vertical, rising punch thrown with the rear hand.',
-      thumbnailUrl: 'https://example.com/uppercut_thumbnail.jpg',
-      videoId: 'uppercut_video_id',
+      title: 'Shield Set',
+      description: 'A series of different moves to defend against attacks.',
+      videoId: 'mmrOzmUrJwI',
     ),
   ];
 
@@ -47,19 +43,22 @@ class TechniquesCatalog extends StatelessWidget {
           crossAxisCount: 2,
           childAspectRatio: 3/2,
           crossAxisSpacing: 10,
-          mainAxisSpacing: 10
+          mainAxisSpacing: 10,
         ),
         itemCount: techniques.length,
         itemBuilder: (context, index) {
+          final technique = techniques[index];
+          final thumbnailUrl = 'http://i3.ytimg.com/vi/${technique.videoId}/hqdefault.jpg';
+
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => YouTubeVideoScreen(
-                    videoId: techniques[index].videoId,
-                    title: techniques[index].title,
-                    description: techniques[index].description,
+                    videoId: technique.videoId,
+                    title: technique.title,
+                    description: technique.description,
                   ),
                 ),
               );
@@ -69,7 +68,7 @@ class TechniquesCatalog extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CachedNetworkImage(
-                      imageUrl: techniques[index].thumbnailUrl,
+                      imageUrl: thumbnailUrl,
                       fit: BoxFit.cover,
                       placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                       errorWidget: (context, url, error) => Icon(Icons.error),
@@ -78,7 +77,7 @@ class TechniquesCatalog extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      techniques[index].title,
+                      technique.title,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),

@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class HomeController extends StatefulWidget {
+class HomeController extends StatelessWidget {
   const HomeController({Key? key}) : super(key: key);
-  @override
-  State<HomeController> createState() => _HomeControllerState();
-}
-class _HomeControllerState extends State<HomeController> {
-  @override
-  void initState() {
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen')),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
+            ElevatedButton(
+              child: const Text('View MMA Techniques'),
+              onPressed: () => context.go('/techniques-catalog'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: const Text('Watch Sample Video'),
+              onPressed: () => context.go('/youtube-video'),
+            ),
           ],
         ),
       ),

@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YouTubeVideoScreen extends StatefulWidget {
-  const YouTubeVideoScreen({Key? key}) : super(key: key);
+  final String videoId;
+  final String title;
+  final String description;
+
+  const YouTubeVideoScreen({
+    Key? key, 
+    required this.videoId, 
+    required this.title, 
+    required this.description
+  }) : super(key: key);
 
   @override
   _YouTubeVideoScreenState createState() => _YouTubeVideoScreenState();
@@ -15,9 +24,9 @@ class _YouTubeVideoScreenState extends State<YouTubeVideoScreen> {
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      initialVideoId: 'UR9-AP2yzY0', // Replace with your video ID
+      initialVideoId: widget.videoId,
       flags: const YoutubePlayerFlags(
-        autoPlay: true,
+        autoPlay: false,
         mute: false,
       ),
     );
@@ -26,12 +35,25 @@ class _YouTubeVideoScreenState extends State<YouTubeVideoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('YouTube Video')),
-      body: Center(
-        child: YoutubePlayer(
-          controller: _controller,
-          showVideoProgressIndicator: true,
-        ),
+      appBar: AppBar(title: Text(widget.title)),
+      body: Column(
+        children: [
+          YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            onReady: () => debugPrint('Ready'),
+            bottomActions: [
+              CurrentPosition(),
+              ProgressBar(isExpanded: true),
+              RemainingDuration(),
+              FullScreenButton(),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(widget.description),
+          ),
+        ],
       ),
     );
   }

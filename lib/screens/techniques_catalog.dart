@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mastersMartialArts/models/technique.dart';
-import 'package:mastersMartialArts/screens/youtube_video_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TechniquesCatalog extends StatelessWidget {
   TechniquesCatalog({Key? key}) : super(key: key);
@@ -51,17 +51,15 @@ class TechniquesCatalog extends StatelessWidget {
           final thumbnailUrl = 'http://i3.ytimg.com/vi/${technique.videoId}/hqdefault.jpg';
 
           return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => YouTubeVideoScreen(
-                    videoId: technique.videoId,
-                    title: technique.title,
-                    description: technique.description,
-                  ),
-                ),
-              );
+            onTap: () async {
+              final url = 'https://www.youtube.com/watch?v=${technique.videoId}';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Could not launch $url')),
+                );
+              }
             },
             child: Card(
               child: Column(

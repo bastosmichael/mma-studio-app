@@ -16,11 +16,6 @@ class HomeController extends StatelessWidget {
               child: const Text('View MMA Techniques'),
               onPressed: () => context.go('/techniques-catalog'),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Watch Sample Video'),
-              onPressed: () => context.go('/youtube-video'),
-            ),
           ],
         ),
       ),

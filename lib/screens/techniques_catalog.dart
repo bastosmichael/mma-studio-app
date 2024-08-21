@@ -31,6 +31,24 @@ class TechniquesCatalog extends StatelessWidget {
       description: 'A series of different moves to defend against attacks.',
       videoId: 'mmrOzmUrJwI',
     ),
+    Technique(
+      id: '5',
+      title: 'Elbow Plus Count',
+      description: 'A set of moves specifically designed for using your elbows.',
+      videoId: 'c-K0MXU2RmI',
+    ),
+    Technique(
+      id: '6',
+      title: 'Takedown FLow',
+      description: 'A flow for specificly control positions and takedowns',
+      videoId: 'jwHeXMRoT6Y',
+    ),
+    Technique(
+      id: '7',
+      title: 'Ground Control Flow',
+      description: 'A flow of moves involving submissisons',
+      videoId: 'Sl2AXlAwXE',
+    )
   ];
 
   @override

@@ -18,7 +18,10 @@ class MenuScaffold extends StatelessWidget {
               actions: routeNames
                   .map((route) => TextButton(
                         onPressed: () => context.go('/${route.toLowerCase()}'),
-                        child: Text(route),
+                        child: Text(route.replaceAll('-', ' ')),
+                        style: TextButton.styleFrom(
+                          primary: Colors.white,
+                        ),
                       ))
                   .toList(),
             ),
@@ -41,7 +44,7 @@ class MenuScaffold extends StatelessWidget {
                   ),
                   ...routeNames
                       .map((route) => ListTile(
-                            title: Text(route),
+                            title: Text(route.replaceAll('-', ' ')),
                             onTap: () {
                               context.go('/${route.toLowerCase()}');
                               Navigator.of(context).pop();

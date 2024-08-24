@@ -21,6 +21,11 @@ class HomeController extends StatelessWidget {
               child: const Text('Watch Sample Video'),
               onPressed: () => context.go('/youtube-video'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: const Text('Terms of Service'),
+              onPressed: () => context.go('/terms-of-service'),
+            ),
           ],
         ),
       ),

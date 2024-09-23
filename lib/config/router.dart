@@ -5,14 +5,16 @@ import 'package:mastersMartialArts/screens/home/home_controller.dart';
 import 'package:mastersMartialArts/screens/splash_screen.dart';
 import 'package:mastersMartialArts/screens/youtube_video_screen.dart';
 import 'package:mastersMartialArts/screens/techniques_catalog.dart';
+import 'package:mastersMartialArts/screens/membership_screen.dart';
 
 class AppRoutes {
   static const splash = 'splash';
   static const home = 'home';
   static const youtubeVideo = 'youtube-video';
   static const techniquesCatalog = 'techniques-catalog';
+  static const membership = 'membership';
 
-  static const List<String> routes = [home, youtubeVideo, techniquesCatalog];
+  static const List<String> routes = [home, youtubeVideo, techniquesCatalog, membership];
 }
 
 final router = GoRouter(
@@ -52,6 +54,15 @@ final router = GoRouter(
         return MenuScaffold(
           routeNames: AppRoutes.routes,
           child: TechniquesCatalog(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/membership',
+      builder: (BuildContext context, GoRouterState state) {
+        return const MenuScaffold(
+          routeNames: AppRoutes.routes,
+          child: MembershipScreen(),
         );
       },
     ),

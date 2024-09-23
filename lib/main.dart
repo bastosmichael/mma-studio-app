@@ -3,8 +3,16 @@ import 'package:mastersMartialArts/config/router.dart';
 import 'package:mastersMartialArts/theme/color_themes.dart';
 import 'package:mastersMartialArts/theme/text_themes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:recurly_flutter/recurly_flutter.dart';
 
-void main() => runApp(const MastersMartialArtsApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Recurly.initialize(
+    publicKey: 'YOUR_RECURLY_PUBLIC_KEY',
+    environment: RecurlyEnvironment.sandbox,
+  );
+  runApp(const MastersMartialArtsApp());
+}
 
 /// The main app.
 class MastersMartialArtsApp extends StatelessWidget {

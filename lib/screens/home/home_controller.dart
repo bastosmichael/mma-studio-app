@@ -21,6 +21,16 @@ class HomeController extends StatelessWidget {
               child: const Text('Watch Sample Video'),
               onPressed: () => context.go('/youtube-video'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: const Text('Join Membership'),
+              onPressed: () {
+                // For now, we'll just print a message
+                print("Membership button pressed!");
+                // Future work could navigate to a membership page
+                // e.g. context.go('/membership');
+              },
+            ),
           ],
         ),
       ),

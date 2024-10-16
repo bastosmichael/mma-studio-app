@@ -5,14 +5,16 @@ import 'package:mastersMartialArts/screens/home/home_controller.dart';
 import 'package:mastersMartialArts/screens/splash_screen.dart';
 import 'package:mastersMartialArts/screens/youtube_video_screen.dart';
 import 'package:mastersMartialArts/screens/techniques_catalog.dart';
+import 'package:mastersMartialArts/screens/login_screen.dart'; // Import the login screen
 
 class AppRoutes {
   static const splash = 'splash';
   static const home = 'home';
   static const youtubeVideo = 'youtube-video';
   static const techniquesCatalog = 'techniques-catalog';
+  static const login = 'login'; // Add login route
 
-  static const List<String> routes = [home, youtubeVideo, techniquesCatalog];
+  static const List<String> routes = [home, youtubeVideo, techniquesCatalog, login]; // Update routes
 }
 
 final router = GoRouter(
@@ -22,6 +24,12 @@ final router = GoRouter(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
         return const SplashScreen();
+      },
+    ),
+    GoRoute(
+      path: '/login', // Define the login route
+      builder: (BuildContext context, GoRouterState state) {
+        return const LoginScreen(); // Use the LoginScreen
       },
     ),
     GoRoute(

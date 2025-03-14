@@ -21,7 +21,7 @@ class TechniquesCatalog extends StatelessWidget {
     ),
     Technique(
       id: '3',
-      title: 'Kick Count',
+      title: 'Blue',
       description: 'Different kicks that are needed for all yellow belts.',
       videoId: 'WVVcjqLsrSM',
     ),
